@@ -1,7 +1,7 @@
 from DrissionPage import ChromiumPage
 
-from homepage import homepage
-from login import loginAccount
+from pages.homepage import homepage
+from pages.login import loginAccount
 
 
 def getJobs(page: ChromiumPage) -> ChromiumPage:
