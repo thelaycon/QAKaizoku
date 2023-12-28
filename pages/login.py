@@ -17,5 +17,4 @@ def loginAccount(page: ChromiumPage) -> ChromiumPage:
     page.ele("@id=username").input(EMAIL)
     page.ele("@id=password").input(PASSWORD + "\n")
 
-# p = ChromiumPage()
-# loginAccount(p)
+

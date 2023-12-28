@@ -12,3 +12,8 @@ def homepage(page: ChromiumPage) -> ChromiumPage:
     page.get(homeUrl)
     
     return page
+
+
+def clearCache(page: ChromiumPage) -> ChromiumPage:
+    page.clear_cache()
+    return page

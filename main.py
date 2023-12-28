@@ -4,7 +4,7 @@ import time
 import click
 from DrissionPage import WebPage, ChromiumOptions
 
-from pages.homepage import homepage
+from pages.homepage import homepage, clearCache
 from pages.login import loginAccount
 
 
@@ -55,7 +55,7 @@ def clear(headless):
     page = WebPage(chromium_options=co)
 
     # Clear cache
-    page.clear_cache()
+    clearCache(page)
     page.quit()
 
 
