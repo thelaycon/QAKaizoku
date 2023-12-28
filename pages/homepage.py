@@ -5,10 +5,10 @@ def homepage(page: ChromiumPage) -> ChromiumPage:
     page.set.window.maximized()
     # Attempt to login LinkedIn with ChromiumPage
 
-    with open("urls.json") as file:
-        urls = json.load(file)
+    with open("options.json") as file:
+        options = json.load(file)
 
-    homeUrl = urls["home"]
+    homeUrl = options["home"]
     page.get(homeUrl)
     
     return page
