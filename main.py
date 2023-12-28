@@ -6,6 +6,7 @@ from DrissionPage import WebPage, ChromiumOptions
 
 from pages.homepage import homepage, clearCache
 from pages.login import loginAccount
+from pages.jobs import scrapeJobs
 
 
 @click.group()
@@ -75,7 +76,7 @@ def run(headless):
     page = WebPage(chromium_options=co)
 
     # Visit home
-    homepage(page)
+    scrapeJobs(page)
     time.sleep(10)
     page.quit()
 
