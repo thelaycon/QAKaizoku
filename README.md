@@ -7,7 +7,7 @@ If you have once logged in via Chrome before and you are attempting a new login,
 
 Login bot:
 
-`python main.py login --headless=false`
+`python main.py login --headless=0`
 
 Clear cache:
 
