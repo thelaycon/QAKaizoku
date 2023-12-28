@@ -18,4 +18,4 @@ Start scraping
 `python main.py run`
 
 
-Defautly, the bot run headlessly.
+Defaultly, the bot run headlessly.
