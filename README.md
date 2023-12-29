@@ -43,7 +43,6 @@ Modify the `options.json` file to tailor the job scraping process to your prefer
 	"geoid": "103644278",
 	"keyword": "QA Automation",
 	"location": "United States",
-	"headless": true
 }
 ```
 
