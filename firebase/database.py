@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 import firebase_admin
-from firebase_admin import credentials
+from firebase_admin import credentials, db
 
 load_dotenv()
 
@@ -17,8 +17,9 @@ class Database:
         pass
         
         
-    def add_job(self, data):
-        pass
+    def saveJobsToFirebase(self, data):
+        ref = db.reference("/jobs")
+        ref.push(data)
     
     def remove_job(self, data):
         pass
