@@ -65,3 +65,5 @@ uvicorn api:app --reload
 Available endpoints:
 
 - Get jobs: `/jobs`
+
+[!get jobs](examples/example_get_jobs.png)
