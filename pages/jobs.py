@@ -34,7 +34,7 @@ def getJobData(page: ChromiumPage, url: str) -> dict:
     jobDescription = page.ele("@id=job-details").inner_html
     
     return {
-        "jobID": jobID,
+        str(jobID): {
         "detail": {
             "company": company,
             "time": time,
@@ -42,18 +42,18 @@ def getJobData(page: ChromiumPage, url: str) -> dict:
             "jobDescription": jobDescription
             }
         }
+        }
     
     
 def saveJobs(page: ChromiumPage, links: list) -> bool:
     
-    data = dict()
-    try:
-        for link in links:
+    for link in links:
+        try:
             jobData = getJobData(page, link)
             Database.saveJobsToFirebase(jobData)
-    except:
-        logging.warning("Unable to get detail for a job, skipping")
-    
+            logging.info("Successfully stored job")
+        except:
+            logging.warning("Unable to get detail for a job, skipping")
     
     
     

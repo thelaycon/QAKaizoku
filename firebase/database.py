@@ -19,14 +19,16 @@ class Database:
         
     def saveJobsToFirebase(self, data):
         ref = db.reference("/jobs")
-        ref.push(data)
+        ref.update(data)
     
-    def remove_job(self, data):
-        pass
+    def getjobsFromFirebase(self) -> dict:
+        ref = db.reference("/jobs")
+        data = ref.get()
+        
+        return data
         
     def update_job(self, jobID):
         pass
         
     def get_jobs(self, amount=None) -> dict:
         pass
-    
