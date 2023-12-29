@@ -19,7 +19,10 @@ def scrapeJobs(page: ChromiumPage) -> ChromiumPage:
     
     # Visit jobs page
     page.get(URL)
-    page.wait.load_start()
+    page.wait.load_complete()
+    
+    jobs = page.eles("@class=disabled ember-view job-card-container__link job-card-list__title")
+    job_links = [job.link for job in jobs]
     
     
     
