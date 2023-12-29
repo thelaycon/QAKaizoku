@@ -1,6 +1,6 @@
 # QAKaizoku API - QA Automation Jobs
 
-Welcome to QAKaizoku, an advanced API crafted for QA Automation jobs from LinkedIn. This project is under active development, with continuous enhancements being made to ensure optimal performance and reliability.
+QAKaizoku is an API crafted for QA Automation jobs from LinkedIn. This project is under active development, with continuous enhancements being made to ensure optimal performance and reliability.
 
 ## Overview
 
@@ -65,5 +65,3 @@ uvicorn api:app --reload
 Available endpoints:
 
 - Get jobs: `/jobs`
-
-[!get jobs](examples/example_get_jobs.png")
