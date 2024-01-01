@@ -18,6 +18,7 @@ Available endpoints:
 
 - Get jobs: `/jobs`
 
+
 ![get jobs](examples/example_get_jobs.gif)
 
 
