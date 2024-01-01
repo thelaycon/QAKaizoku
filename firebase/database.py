@@ -21,10 +21,13 @@ class Database:
         ref = db.reference("/jobs")
         ref.update(data)
     
-    def getjobsFromFirebase(self) -> dict:
+    def getJobsFromFirebase(self, limit: int) -> dict:
         ref = db.reference("/jobs")
-        data = ref.get()
-        
+        # Fetch jobs by limit
+        if limit is None:
+            data = ref.get()
+        else:
+            data = ref.order_by_child("timestamp").limit_to_first(limit).get()        
         return data
         
  

@@ -8,6 +8,6 @@ Database = Database()
 
 
 @app.get("/jobs")
-def getJobs():
-    data = Database.getjobsFromFirebase()
+def getJobs(limit: int=None):
+    data = Database.getJobsFromFirebase(limit)
     return data
