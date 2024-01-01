@@ -1,3 +1,5 @@
+import time
+import datetime
 import logging
 import json
 import re
@@ -11,6 +13,37 @@ Database = Database()
 
 JOBS_URL = "https://www.linkedin.com/jobs/search/?currentJobId=3795202306&f_TPR=r604800&geoId={0}&keywords={1}&location={2}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=DD"
 
+
+def convertToTimeStamp(timePosted: str) -> float:
+    # Return current timestamp if posted just now
+    if timePosted == "just now":
+            return time.time()
+    
+    # Get timestamp of other times
+    def getTimeStamp(ago: int, _timeType: str) -> float: 
+        now = None
+        # Get timestamp of moment ago
+        if _timeType == "second":
+            now = datetime.datetime.now() - datetime.timedelta(seconds=ago)
+        if _timeType == "minute":
+            now = datetime.datetime.now() - datetime.timedelta(minutes=ago)
+        if _timeType == "hour":
+            now = datetime.datetime.now() - datetime.timedelta(hours=ago)
+        if _timeType == "day":
+            now = datetime.datetime.now() - datetime.timedelta(days=ago)
+        if _timeType == "year":
+            now = datetime.datetime.now() - datetime.timedelta(days=ago*365)        
+        
+        return now.timestamp()
+            
+   
+    ago, timeType, _ = timePosted.split(" ")
+    ago = int(ago)
+    timeType = timeType.strip().strip("s")
+    
+    return getTimeStamp(ago, timeType)
+        
+        
 def getJobData(page: ChromiumPage, url: str) -> dict:
     page.get(url)
     page.wait.load_complete()
@@ -26,10 +59,12 @@ def getJobData(page: ChromiumPage, url: str) -> dict:
     
     if "just now" in locationTime:
         time = "just now"
+        time = convertToTimeStamp(time)
         location = locationTime.strip("just now")
     else:    
         pattern = re.compile(r"(\d+)\s+(hour|day|week|minute|month|year)s?\s+ago")
         time = pattern.search(locationTime).group()
+        time = convertToTimeStamp(time)
         location = re.sub(pattern, "", locationTime)
     jobDescription = page.ele("@id=job-details").inner_html
     
@@ -54,7 +89,7 @@ def saveJobs(page: ChromiumPage, links: list) -> bool:
             logging.info("Successfully stored job")
         except:
             logging.warning("Unable to get detail for a job, skipping")
-    
+
     
     
 def scrapeJobs(page: ChromiumPage) -> ChromiumPage:
@@ -77,7 +112,6 @@ def scrapeJobs(page: ChromiumPage) -> ChromiumPage:
     jobLinks = [job.link for job in jobs]
     
     saveJobs(page, jobLinks) #Save jobs to firebase
-    
     
     
     

@@ -27,8 +27,4 @@ class Database:
         
         return data
         
-    def update_job(self, jobID):
-        pass
-        
-    def get_jobs(self, amount=None) -> dict:
-        pass
+ 
