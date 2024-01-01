@@ -6,9 +6,25 @@ QAKaizoku is an API crafted for QA Automation jobs from LinkedIn. This project i
 
 QAKaizoku is a tool designed to automate the extraction of QA Automation job listings from LinkedIn. The core functionality is encapsulated in `main.py`, serving as the central entry point for scraping data. This script seamlessly logs into the LinkedIn website undetected, providing a streamlined approach to retrieving job information.
 
-## Usage
+## API Endpoints
+
+To access the jobs API, ensure the FastAPI program is running:
+
+```bash
+uvicorn api:app --reload
+```
+
+Available endpoints:
+
+- Get jobs: `/jobs`
+
+![get jobs](examples/example_get_jobs.gif)
+
+
+## Scraping Usage
 
 Before diving in, it is recommended to execute the application in a non-headless mode during the initial login. This facilitates the bot in solving challenges and establishing trust with LinkedIn. Once the inaugural login is successful, subsequent runs can be executed in headless mode, enabling the bot to navigate through the feed page without detection.
+
 
 ### Scraping Commands
 
@@ -52,18 +68,3 @@ Tailor the job scraping process to your specifications by modifying the `options
 Feel free to adjust parameters such as `keyword` and `location` to align with your specific requirements.
 
 The application now integrates Firebase for data storage. Configure the Firebase JSON file or implement credentials accordingly. The database URL is fetched from the environment as DATABASE_URL.
-
-
-## API Endpoints
-
-To access the jobs API, ensure the FastAPI program is running:
-
-```bash
-uvicorn api:app --reload
-```
-
-Available endpoints:
-
-- Get jobs: `/jobs`
-
-![get jobs](examples/example_get_jobs.png)
