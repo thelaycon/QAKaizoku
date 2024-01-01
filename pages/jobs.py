@@ -72,7 +72,7 @@ def getJobData(page: ChromiumPage, url: str) -> dict:
         str(jobID): {
         "detail": {
             "company": company,
-            "time": time,
+            "timestamp": time,
             "location": location,
             "jobDescription": jobDescription
             }
