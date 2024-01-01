@@ -22,6 +22,13 @@ Available endpoints:
 ![get jobs](examples/example_get_jobs.gif)
 
 
+Limit to first 4 queries:
+
+```bash
+http://127.0.0.1:8000/jobs?limit=4
+```
+
+
 ## Scraping Usage
 
 Before diving in, it is recommended to execute the application in a non-headless mode during the initial login. This facilitates the bot in solving challenges and establishing trust with LinkedIn. Once the inaugural login is successful, subsequent runs can be executed in headless mode, enabling the bot to navigate through the feed page without detection.
